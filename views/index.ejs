@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"> </script>
+
+    <link rel="stylesheet" href="../styling/style.css">
+</head>
+<body>
+
+    <h2>TODO-APP</h2>
+    
+    <div class="add-container card p-4" >
+            <form action="/add" method="POST">
+                <input type="text" name="title" placeholder="task" >
+                <button type="submit">Add</button>
+            </form>
+    </div>
+
+    <br>
+
+    <% for ( var i = 0; i < row.length; i++) { %>
+        <div class="edit-container" >
+        
+                <input type="text" name="editTask" value="<%=row[i].title %>" data-id="<%=row[i]._id %>">
+
+                <button name="<%= row[i]._id %>" class="edit" data-id="<%=row[i]._id %>">save edit</button>
+        </div>
+        
+        <div>
+                <% let genreChk = row[i].done == 'true' ? 'checked' : '' %>
+                <input type="checkbox" <%= genreChk %> name="<%= row[i].done %>" class="taskDone" data-id="<%=row[i]._id %>" >
+                <span class="text"><%= row[i].title %></span>
+                <button class="delete" name="<%= row[i]._id %>">delete</button>
+        </div>
+        <br>
+    <% } %>
+    
+    <script src="../js/public.js"></script>
+
+</body>
+</html>

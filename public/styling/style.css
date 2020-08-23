@@ -1,0 +1,9 @@
+
+.edit-container{
+    /* display: none; */
+}
+
+input[type=checkbox]:checked + span{
+    text-decoration: line-through;
+
+}

@@ -25,7 +25,10 @@ app.post('/add', async (req, res) => {
     let year = date.getFullYear();
     let month = date.getMonth();
     let day = date.getDate();
-    let all = (year + "" + month + "" + day);
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let all = (year + "-" + month + "-" + day + " Time: " + hour + ":" + minutes + ":" + seconds);
     let task = {
         title: req.body.title,
         done: false,

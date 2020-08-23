@@ -1,7 +1,7 @@
 import nedb from 'nedb';
 import ejs from 'ejs';
 
-let db = new nedb({filename : 'tasks', autoload: true});
+let db = new nedb({filename : './models/tasks', autoload: true});
 db.loadDatabase();
 
 function mainPage () {
@@ -30,7 +30,6 @@ function addTask(task) {
 }
 
 // TODO:
-// 1. FIXA BACKEND FÖR ATT SE OM TASKEN ÄR GJORD ELLER INTE(TRUE ELLER FALSE), SÅ ATT DET SPARAS OM MAN RESFRESHAR SIDAN
 // 2. ÄNDRA FRÅN AJAX TILL AXIOS ELLER FETCH
 // 3. FIXA SNYGG FRONTEND
 
@@ -41,6 +40,8 @@ function addTask(task) {
 // DISPLAY ALLA TASKS
 // PÅ NÅTT SÄTT FIXA SÅ ATT MAN SER ATT EN TASK ÄR DONE 
 // GÖRA SÅ ATT EDIT FUNKAR
+// FIXA BACKEND FÖR ATT SE OM TASKEN ÄR GJORD ELLER INTE(TRUE ELLER FALSE), SÅ ATT DET SPARAS OM MAN RESFRESHAR SIDAN
+
 
 function editTask(id, task) {
     return new Promise((resolve, reject) => {

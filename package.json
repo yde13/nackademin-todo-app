@@ -1,28 +1,21 @@
 {
-  "name": "nackademin-todo-app",
+  "name": "mvc-mall",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.5",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "nedb": "^1.8.0",
+    "nedb-promises": "^4.0.4",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon main.mjs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yde13/nackademin-todo-app.git"
+    "start": "nodemon app.js"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/yde13/nackademin-todo-app/issues"
-  },
-  "homepage": "https://github.com/yde13/nackademin-todo-app#readme"
+  "license": "ISC"
 }

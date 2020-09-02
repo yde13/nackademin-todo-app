@@ -1,12 +1,12 @@
-const db = require('../database/taskDatabase.js');
+const db = require('../database/database.js');
 
 function getTaskModel () {
     return new Promise(async(resolve, reject) => {
         
         try {
 
-            const posts = await db.find({});
-            console.log(posts);
+            const posts = await db.posts.find({});
+            // console.log(posts);
 
             resolve(posts);
         } catch (error) {
@@ -29,8 +29,8 @@ function addTaskModel(task) {
         
         try {
 
-            const post = await db.insert(task);
-            console.log(post);
+            const post = await db.posts.insert(task);
+            // console.log(post);
 
             resolve(post);
         } catch (error) {
@@ -69,7 +69,7 @@ function editTaskModel(id, task) {
 
         try {
 
-            const post = await db.update({_id :id},{ $set: task });
+            const post = await db.posts.update({_id :id},{ $set: task });
             console.log(post + " post");
 
             resolve(post);
@@ -98,7 +98,7 @@ function deleteTaskModel (id) {
     return new Promise(async(resolve, reject) => {
         try {
 
-            const removed = await db.remove({_id : id});
+            const removed = await db.posts.remove({_id : id});
             console.log(removed + " post");
 
             resolve(removed);
@@ -108,10 +108,15 @@ function deleteTaskModel (id) {
     });
 }
 
+function clear() {
+    db.posts.remove({}, {multi: true})
+}
+
 module.exports = {
     getTaskModel,
     addTaskModel,
     editTaskModel,
     deleteTaskModel,
+    clear
     //taskIsDoneModel
 }

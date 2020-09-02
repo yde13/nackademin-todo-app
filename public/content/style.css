@@ -1,0 +1,51 @@
+.container {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.loginbtn {
+
+}
+
+.register input {
+    display: flex;
+    flex-direction: row;
+}
+
+.login input {
+    display: flex;
+    flex-direction: row;
+}
+
+.registerbtn {
+
+}
+
+.todoContainer {
+    border: 2px solid grey;
+    padding: 1%;
+    margin: 1%;
+}
+
+.todos {
+    
+}
+
+.register {
+    border: 2px solid grey;
+    padding: 4%;
+    margin: 4%;
+    display: none;
+}
+
+.login {
+    border: 2px solid grey;
+    padding: 4%;
+    margin: 4%;
+    display: none;
+}

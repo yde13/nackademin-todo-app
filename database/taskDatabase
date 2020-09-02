@@ -1,4 +1,9 @@
 {"title":"Fixa så att rollerna funkar","done":false,"created":"2020-7-28 Time: 13:28:32","_id":"Ukx5g6WknQzrLPrN"}
-{"title":"ydis","done":false,"created":"2020-7-29 Time: 15:26:24","_id":"XHuAspiAiSgH0OEY"}
-{"$$deleted":true,"_id":"XHuAspiAiSgH0OEY"}
+{"title":"Jobba på ica och tjäna pengar","done":false,"created":"2020-7-29 Time: 23:54:14","_id":"r7otF4UmpbwyI5d6"}
 {"title":"ydis","done":false,"created":"2020-7-29 Time: 15:27:28","_id":"vnWoTTbSDSLV3kp5"}
+{"$$deleted":true,"_id":"vnWoTTbSDSLV3kp5"}
+{"$$deleted":true,"_id":"r7otF4UmpbwyI5d6"}
+{"$$deleted":true,"_id":"Ukx5g6WknQzrLPrN"}
+{"title":"När man skriver in lösen på fronted så jämför den med det hashade, ändra det","done":false,"created":"2020-7-31 Time: 20:46:25","_id":"sIR7JSEwRQ7BS12Q"}
+{"title":"när man loggar in kollar den på username, ändra till idt","done":false,"created":"2020-7-31 Time: 20:46:52","_id":"SrPoTIP4dwYgWi0C"}
+{"title":"frontend ska veta att när man loggar in så sparas token i en session så den vet att man är berättigad till /todos","done":false,"created":"2020-7-31 Time: 20:47:51","_id":"6SbfznSQHgY8IjC8"}

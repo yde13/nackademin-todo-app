@@ -28,6 +28,7 @@ function user(req, res, next) {
         return res.sendStatus(403)
     }
 }
+
 function admin(req, res, next) {
     console.log('Role: ', req.user.role)
     if(req.user.role == 'Admin'){

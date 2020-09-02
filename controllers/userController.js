@@ -19,6 +19,7 @@ async function getUserController(req, res) {
 
     console.log(success);
     if (success) {
+        //res.redirect('/todos')
         res.json('Logged in as ' + user.username + " " + token)
     } else {
         res.json('Wrong password or username')
@@ -28,21 +29,27 @@ async function getUserController(req, res) {
 }
 
 function postUserController(req, res) {
+    try {
+        const password = req.body.password;
+        console.log(password);
+        const hash = bcrypt.hashSync(password, 10)
+        console.log(hash);
 
-    const password = req.body.password;
-    console.log(password);
-    const hash = bcrypt.hashSync(password, 10)
-    console.log(hash);
+        const credentials = {
+            username: req.body.username,
+            password: hash,
+            role: req.body.role
+        }
 
-    const credentials = {
-        username: req.body.username,
-        password: hash,
-        role: req.body.role
+        model.postUserModel(credentials);
+        res.redirect('/todos')//Måste fixa så att den sparar token i clienten så att den vet vem det är
+
+        //res.json("Lade till " + credentials.username)
+
+    } catch (error) {
+        res.status(400).json({msg: "Failed"})
     }
 
-    model.postUserModel(credentials);
-
-    res.json("Lade till " + credentials.username)
 }
 
 function editUserController(req, res) {
@@ -55,7 +62,7 @@ function editUserController(req, res) {
             username: req.body.username,
             password: hash
         }
-        const updatedUser =  model.editUserModel(id, user)
+        const updatedUser = model.editUserModel(id, user)
         res.json(user.username + " is updated");
     } catch (error) {
         console.log({ error: error.message })
@@ -65,7 +72,7 @@ function editUserController(req, res) {
 function deleteUserController(req, res) {
     try {
         let id = req.params.id;
-         model.deleteUserModel(id)
+        model.deleteUserModel(id)
         res.json("Deleted " + id)
     } catch (error) {
         res.json({ error: error.message })

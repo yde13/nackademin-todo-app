@@ -1,2 +1,0 @@
-// The Scripts folder is the recommended folder to store Java Script files in our MVC web application. 
-// We put static and publicly accessible files for jQuery and Java Script validation files (*.js) in this folder.

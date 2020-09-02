@@ -1,9 +1,13 @@
 const db = require('../database/userDatabase.js');
 
 async function getUserModel(username){
-
-    const user = await db.findOne({ username: username })
-    return user;
+    try {
+        const user = await db.findOne({ username: username })
+        return user;
+    } catch (error) {
+        return error
+    }
+    
     
 }
 

@@ -22,6 +22,5 @@ app.get('/todos', function (req, res) { //authorization, user,
 app.use('/', routes)
 
 //Server
-const port = 5500
-app.listen(port);
-console.log("Server running on port " + port + ";")
+//is in server.js
+module.exports = app

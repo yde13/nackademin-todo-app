@@ -1,9 +1,0 @@
-{"username":"Alexandre","password":"philip","role":"Admin","_id":"1"}
-{"$$deleted":true,"_id":"1"}
-{"username":"Alexandre","password":"philip","role":"Admin","_id":"1"}
-{"$$deleted":true,"_id":"1"}
-{"username":"Jacob","password":"root","role":"User","_id":"3"}
-{"username":"Jacob","password":"root","role":"Admin","_id":"3"}
-{"$$deleted":true,"_id":"3"}
-{"username":"Amelia","password":"root","role":"User","_id":"3"}
-{"$$deleted":true,"_id":"3"}

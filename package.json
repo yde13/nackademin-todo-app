@@ -16,7 +16,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "ENVIRONMENT=test mocha",
-    "start": "nodemon app.js"
+    "start": "nodemon start.js"
   },
   "author": "",
   "license": "ISC"

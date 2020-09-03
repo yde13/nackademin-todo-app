@@ -2,9 +2,10 @@ const model = require('../models/taskModel');
 
 
 async function getTaskController(req, res) {
-    console.log(req.body);
     
     const post = await model.getTaskModel()
+    // console.log(post);
+    
     res.json(post)
 }; //skicka role så att man kan se om det är en admin eller user
 

@@ -1,14 +1,19 @@
 const model = require('../models/userModel');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
 
 async function getUserController(req, res) {
 
-    const secret = 'secret'
+    const secret = process.env.SECRET;
     const passwordAttempt = req.body.password;
     const user = await model.getUserModel(req.body.username);
     const success = bcrypt.compareSync(passwordAttempt, user.password)
     const token = jwt.sign(user, secret)
+
+    console.log(secret);
+    
 
     console.log(passwordAttempt);
     console.log(user);

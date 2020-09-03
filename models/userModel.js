@@ -29,7 +29,7 @@ function editUserModel(id, user) {
         try {
 
             const post = await db.users.update({_id :id},{ $set: user });
-            console.log(post + " user");
+            // console.log(post + " user");
 
             resolve(post);
         } catch (error) {
@@ -44,7 +44,7 @@ function deleteUserModel (id) {
         try {
 
             const removed = await db.users.remove({_id : id});
-            console.log(removed + " post");
+            // console.log(removed + " post");
 
             resolve(removed);
         } catch (error) {
@@ -53,11 +53,16 @@ function deleteUserModel (id) {
     });
 }
 
+function clear () {
+    db.users.remove({})
+}
+
 
 
 module.exports = {
     getUserModel,
     postUserModel,
     editUserModel,
-    deleteUserModel
+    deleteUserModel,
+    clear
 }

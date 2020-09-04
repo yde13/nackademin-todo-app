@@ -29,15 +29,15 @@ describe('users', () => {
 
         
 
-        console.log(credentials);
+        // console.log(credentials);
         const decryptPassword = bcrypt.compareSync('philip', credentials.password)
-        console.log(decryptPassword + ' decrypt');
+        // console.log(decryptPassword + ' decrypt');
         let pass = 'philip'
 
         
         const user = await userModel.getUserModel(credentials.username, pass)
         
-        user.username.should.equal(credentials.username)
+        user.user.username.should.equal(credentials.username) //lite weird med user.user
     })
 
     it('Should post one user and register', async () => {
@@ -49,9 +49,9 @@ describe('users', () => {
         let credentials = await userModel.postUserModel(
             username, password, role
             )
-            console.log('credentials');
+            // console.log('credentials');
             
-            console.log(credentials);
+            // console.log(credentials);
             
         const success = bcrypt.compareSync( password, credentials.password)
         // console.log(user);
@@ -100,36 +100,3 @@ describe('users', () => {
     })
 
 })
-
-// describe('Integation test on login and register', () => {
-//     this.currentTest = {}
-//     beforeEach(async () => {
-//         await userModel.clear()
-//         this.currentTest.user = await userModel.postUserModel({
-//             username: "yde",
-//             password: "root",
-//             role: 'User',
-//             _id: '2'
-//         })
-//         //  console.log(user);
-
-//         // this.currentTest.userID = user.id
-//         // this.currentTest.token =
-//         //     await User.authenticate("yde", "root")
-//     })
-//     it('Should create a user', () => { //how to test a hashed password?
-//         // console.log(this.currentTest.user);
-//         // let fields = this.currentTest.user
-//         // request(app)
-//         // post('/user')
-//         // set('Authorization', `Bearer ${this.test.token}`)
-//         //     .set('Content-Type', `application/json`)
-//         //     .send(fields)
-//         //     .end((err, res) => {
-//         //         expect(res).to.have.status(201)
-//         //         expect(res).to.be.json
-//         //         expect(res.body).to.have.keys(['fields'])
-//         //     })
-        
-//     })
-// })

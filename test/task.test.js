@@ -41,14 +41,14 @@ describe('Task', () => {
             title: "Diska",
             done: true,
             created: "2020-03-12",
-            _id: "2"
+            _id: "7"
         }
         const addTodo = await taskModel.addTaskModel(todo)
         addTodo.should.eql({
             title: "Diska",
             done: true,
             created: "2020-03-12",
-            _id: "2"
+            _id: "7"
         })
     })
 

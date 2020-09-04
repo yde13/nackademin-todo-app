@@ -26,10 +26,9 @@ async function getUserController(req, res) {
 
 
 
-    console.log(user.username + ' här har vi user');
-    if (user.username == username) {
+    if (user.user.username == username) {
         //res.redirect('/todos')
-        res.json('Logged in as ' + user.username )
+        res.json({data: user.user})
     } else {
         res.json('Wrong password or username')
     }
@@ -59,10 +58,10 @@ function postUserController(req, res) {
         //     role: req.body.role
         // }
 
-        model.postUserModel(username, password, role);
-        res.redirect('/todos')//Måste fixa så att den sparar token i clienten så att den vet vem det är
+        let user = model.postUserModel(username, password, role);
+        // res.redirect('/todos')//Måste fixa så att den sparar token i clienten så att den vet vem det är
 
-        //res.json("Lade till " + credentials.username)
+        res.json({fields: user})
 
     } catch (error) {
         res.status(400).json({msg: "Failed"})

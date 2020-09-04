@@ -12,6 +12,8 @@ function fetchData() {
                         Done: ${todo.done}
                         <br>
                         Created: ${todo.created}
+                        <br>
+                        Urgent: ${todo.urgent}
                         </p>
                         <hr>`
                 })

@@ -21,11 +21,11 @@ async function getUserModel(username, password) {
         
         const success = bcrypt.compareSync(password, user.password)
         const token = jwt.sign(user, secret)
-        console.log(success + ' hej');
-        console.log(token + ' hejdå');
+        // console.log(success + ' hej');
+        // console.log(token + ' hejdå');
         
         
-        return user;
+        return {user, token};
     } catch (error) {
         return error
     }
@@ -38,16 +38,16 @@ function postUserModel(username, password, role) {
 
         try {
             // const user = password
-            console.log('här');
+            // console.log('här');
             
-            console.log( password);
-            console.log( username);
+            // console.log( password);
+            // console.log( username);
             
             
             // const password = user
             // console.log(password);
             const hashedPassword = bcrypt.hashSync(password, 10)
-            console.log(hashedPassword);
+            // console.log(hashedPassword);
 
             credentials = {
                 username: username,

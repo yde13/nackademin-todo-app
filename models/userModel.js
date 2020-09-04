@@ -1,20 +1,63 @@
 const db = require('../database/database.js');
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
-async function getUserModel(username){
+
+async function getUserModel(username, password) {
     try {
+        // console.log(username + '      ' + password + ' höhöhöhöh');
+        
+        const secret = process.env.SECRET;
+        // const passwordAttempt = req.body.password;
+        // const user = await model.getUserModel(username);
+       
+
         const user = await db.users.findOne({ username: username })
+        // console.log(user.password + ' whut');
+        // console.log(password + ' weird');
+        
+        // console.log(user.password + '    lösen');
+        
+        const success = bcrypt.compareSync(password, user.password)
+        const token = jwt.sign(user, secret)
+        console.log(success + ' hej');
+        console.log(token + ' hejdå');
+        
+        
         return user;
     } catch (error) {
         return error
     }
-    
-    
+
+
 }
 
-function postUserModel(credentials){
-    return new Promise(async(resolve, reject) => {
+function postUserModel(username, password, role) {
+    return new Promise(async (resolve, reject) => {
 
         try {
+            // const user = password
+            console.log('här');
+            
+            console.log( password);
+            console.log( username);
+            
+            
+            // const password = user
+            // console.log(password);
+            const hashedPassword = bcrypt.hashSync(password, 10)
+            console.log(hashedPassword);
+
+            credentials = {
+                username: username,
+                password: hashedPassword,
+                role: role,
+            }
+            // const user = username
+            // console.log('hje ' + user.password);
+            
+
             const insert = await db.users.insert(credentials);
             resolve(insert);
         } catch (error) {
@@ -24,11 +67,11 @@ function postUserModel(credentials){
 }
 
 function editUserModel(id, user) {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
 
         try {
 
-            const post = await db.users.update({_id :id},{ $set: user });
+            const post = await db.users.update({ _id: id }, { $set: user });
             // console.log(post + " user");
 
             resolve(post);
@@ -38,12 +81,12 @@ function editUserModel(id, user) {
     });
 }
 
-function deleteUserModel (id) {
+function deleteUserModel(id) {
 
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
 
-            const removed = await db.users.remove({_id : id});
+            const removed = await db.users.remove({ _id: id });
             // console.log(removed + " post");
 
             resolve(removed);
@@ -53,8 +96,8 @@ function deleteUserModel (id) {
     });
 }
 
-function clear () {
-    db.users.remove({})
+async function clear() {
+    await db.users.remove({})
 }
 
 

@@ -22,7 +22,8 @@ async function getTaskController(req, res) {
         let task = {
             title: req.body.title,
             done: false,
-            created: all
+            created: all,
+            urgent: false
         }
         console.log(task);
 

@@ -6,26 +6,30 @@ require('dotenv').config()
 
 async function getUserController(req, res) {
 
-    const secret = process.env.SECRET;
-    const passwordAttempt = req.body.password;
-    const user = await model.getUserModel(req.body.username);
-    const success = bcrypt.compareSync(passwordAttempt, user.password)
-    const token = jwt.sign(user, secret)
+    // const secret = process.env.SECRET;
+    
+    const username = req.body.username
+    const password = req.body.password
 
-    console.log(secret);
+    
+    const user = await model.getUserModel(username, password);
+    // const success = bcrypt.compareSync(passwordAttempt, user.password)
+    // const token = jwt.sign(user, secret)
+
+    // console.log(secret);
     
 
-    console.log(passwordAttempt);
-    console.log(user);
-    console.log(token);
+    // console.log(passwordAttempt);
+    // console.log(user);
+    // console.log(token);
 
 
 
 
-    console.log(success);
-    if (success) {
+    console.log(user.username + ' här har vi user');
+    if (user.username == username) {
         //res.redirect('/todos')
-        res.json('Logged in as ' + user.username + " " + token)
+        res.json('Logged in as ' + user.username )
     } else {
         res.json('Wrong password or username')
     }
@@ -35,18 +39,27 @@ async function getUserController(req, res) {
 
 function postUserController(req, res) {
     try {
-        const password = req.body.password;
-        console.log(password);
-        const hash = bcrypt.hashSync(password, 10)
-        console.log(hash);
+        // const password = req.body.password;
+        // console.log(password);
+        // const hash = bcrypt.hashSync(password, 10)
+        // console.log(hash);
 
-        const credentials = {
-            username: req.body.username,
-            password: hash,
-            role: req.body.role
-        }
+        // const credentials = {
+        //     username: req.body.username,
+        //     password: hash,
+        //     role: req.body.role
+        // }
+        const username = req.body.username
+        const password = req.body.password
+        const role = req.body.role
 
-        model.postUserModel(credentials);
+        // const credentials = {
+        //     username: req.body.username,
+        //     password: req.body.password,
+        //     role: req.body.role
+        // }
+
+        model.postUserModel(username, password, role);
         res.redirect('/todos')//Måste fixa så att den sparar token i clienten så att den vet vem det är
 
         //res.json("Lade till " + credentials.username)

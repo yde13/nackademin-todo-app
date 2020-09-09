@@ -8,6 +8,8 @@ switch (process.env.ENVIRONMENT) {
         
         db.posts = new Datastore({ filename: './database/development/taskDatabase', autoload: true });
         db.users = new Datastore({ filename: './database/development/userDatabase', autoload: true });
+        db.todoList = new Datastore({ filename: './database/development/todoListDatabase', autoload: true });
+
 
         break;
 
@@ -16,6 +18,7 @@ switch (process.env.ENVIRONMENT) {
 
         db.posts = new Datastore({ filename: './database/test/test_taskDatabase', autoload: true });
         db.users = new Datastore({ filename: './database/test/test_userDatabase', autoload: true });
+        db.todoList = new Datastore({ filename: './database/test/test_todoListDatabase', autoload: true });
 
         
         break;

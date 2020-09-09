@@ -16,7 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "ENVIRONMENT=test mocha",
+    "test": "ENVIRONMENT=test mocha --recursive",
     "start": "nodemon start.js"
   },
   "author": "",

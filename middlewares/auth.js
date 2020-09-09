@@ -7,20 +7,27 @@ function authorization(req, res, next) {
 
     if (!req.headers.authorization) return res.sendStatus('403');
 
-    const token = req.headers.authorization.replace("Bearer", "");
-    console.log(token)
+    const token = req.headers.authorization.replace("Bearer ", "");
+
+    
 
     try {
+
         const payload = jwt.verify(token, secret)
+
         req.user = payload;
+
         next();
     } catch (error) {
+        
         res.sendStatus(403);
     }
 }
 
 
 function user(req, res, next) {
+    // console.log(req);
+    
         
     console.log('Role: ', req.user.role)
     if (req.user.role == 'Admin' || req.user.role == 'User') {
@@ -32,7 +39,7 @@ function user(req, res, next) {
 }
 
 function admin(req, res, next) {
-    console.log('Role: ', req.user.role)
+    console.log('Role: ', req.body.role)
     if(req.user.role == 'Admin'){
         next()
     } else {

@@ -2,14 +2,14 @@ const model = require('../models/taskModel');
 
 
 async function getTaskController(req, res) {
-    
+
     const post = await model.getTaskModel()
     // console.log(post);
-    
+
     res.json(post)
 }; //skicka role så att man kan se om det är en admin eller user
 
- function addTaskController(req, res) {
+function addTaskController(req, res) {
     try {
         let date = new Date();
         let year = date.getFullYear();
@@ -23,7 +23,8 @@ async function getTaskController(req, res) {
             title: req.body.title,
             done: false,
             created: all,
-            urgent: false
+            urgent: false,
+            listID: req.body.listID
         }
         console.log(task);
 
@@ -35,7 +36,7 @@ async function getTaskController(req, res) {
     }
 };
 
- function editTaskController(req, res) {
+function editTaskController(req, res) {
     try {
         var id = req.params.id;
         let task = {
@@ -43,7 +44,7 @@ async function getTaskController(req, res) {
             done: req.body.done
         }
         console.log(req.body)
-        const updatedToDo =  model.editTaskModel(id, task)
+        const updatedToDo = model.editTaskModel(id, task)
         console.log(" Todo uppdaterad");
         res.json(updatedToDo);
     } catch (error) {
@@ -68,11 +69,11 @@ async function getTaskController(req, res) {
 //     }
 // }
 
- function deleteTaskController(req, res) {
+function deleteTaskController(req, res) {
     try {
         let id = req.params.id;
-         model.deleteTaskModel(id)
-        res.json("Deleted " + id)
+        let deleted = model.deleteTaskModel(id)
+        res.json({data: deleted})
     } catch (error) {
         res.json({ error: error.message })
     }

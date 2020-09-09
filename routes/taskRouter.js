@@ -6,7 +6,7 @@ const { authorization, user, admin } = require('../middlewares/auth')
 const router = new Router()
 
 
-router.get('/task',   controller.getTaskController) //authorization, user
+router.get('/task',  authorization, user, controller.getTaskController) //authorization, user
 //router.get('/posts/:id', controller.getSinglePostController)
 router.post('/task', authorization, user, controller.addTaskController)
 router.delete('/task/:id', authorization, admin, controller.deleteTaskController)

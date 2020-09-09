@@ -38,7 +38,8 @@ function editTaskModel(id, task) {
 
             const post = await db.posts.update({_id :id},{ $set: task });
             // console.log(post + " post");
-
+            console.log('edited ' + post);
+            
             resolve(post);
         } catch (error) {
             reject(error);

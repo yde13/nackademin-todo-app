@@ -8,6 +8,10 @@
     justify-content: space-around;
 }
 
+h1 {
+    text-align: center
+}
+
 .loginbtn {
 
 }

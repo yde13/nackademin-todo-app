@@ -1,3 +1,7 @@
+{"title":"todo list","done":false,"created":"1998","urgent":false,"listID":"1","_id":"gBl0Mb5EIw3VkvQE"}
+{"done":false,"created":"2020-8-8 Time: 14:55:41","urgent":false,"_id":"gyyxCHymqBR81Jy4"}
+{"$$deleted":true,"_id":"gBl0Mb5EIw3VkvQE"}
+{"$$deleted":true,"_id":"gyyxCHymqBR81Jy4"}
 {"title":"Städa","done":false,"created":"2020-07-06","_id":"1"}
 {"title":"Laga mat","done":true,"created":"2020-03-12","_id":"2"}
 {"$$deleted":true,"_id":"1"}
@@ -9,3 +13,4 @@
 {"$$deleted":true,"_id":"3"}
 {"title":"Tvätta","done":false,"created":"2020-04-24","_id":"4"}
 {"$$deleted":true,"_id":"4"}
+{"title":"todo list","done":false,"created":"1998","urgent":false,"listID":"1","_id":"1"}

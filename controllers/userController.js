@@ -36,7 +36,7 @@ async function getUserController(req, res) {
 
 }
 
-function postUserController(req, res) {
+async function postUserController(req, res) {
     try {
         // const password = req.body.password;
         // console.log(password);
@@ -58,9 +58,9 @@ function postUserController(req, res) {
         //     role: req.body.role
         // }
 
-        let user = model.postUserModel(username, password, role);
+        let user = await model.postUserModel(username, password, role);
         // res.redirect('/todos')//Måste fixa så att den sparar token i clienten så att den vet vem det är
-
+        
         res.json({fields: user})
 
     } catch (error) {
@@ -69,17 +69,19 @@ function postUserController(req, res) {
 
 }
 
-function editUserController(req, res) {
+async function editUserController(req, res) {
 
     try {
-        const password = req.body.password;
-        const hash = bcrypt.hashSync(password, 10)
+        // const password = req.body.password;
+        // const hash = bcrypt.hashSync(password, 10)
         var id = req.params.id;
         let user = {
             username: req.body.username,
             password: hash
         }
-        const updatedUser = model.editUserModel(id, user)
+        const updatedUser = await model.editUserModel(id, user)
+        console.log(updatedUser + ' hej');
+        
         res.json(user.username + " is updated");
     } catch (error) {
         console.log({ error: error.message })
@@ -90,7 +92,7 @@ function deleteUserController(req, res) {
     try {
         let id = req.params.id;
         model.deleteUserModel(id)
-        res.json("Deleted " + id)
+        res.json({data: id})
     } catch (error) {
         res.json({ error: error.message })
     }

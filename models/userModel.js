@@ -6,6 +6,7 @@ require('dotenv').config()
 
 async function getUserModel(username, password) {
     try {
+        
         // console.log(username + '      ' + password + ' höhöhöhöh');
         
         const secret = process.env.SECRET;
@@ -20,10 +21,13 @@ async function getUserModel(username, password) {
         // console.log(user.password + '    lösen');
         
         const success = bcrypt.compareSync(password, user.password)
-        const token = jwt.sign(user, secret)
+        const token = jwt.sign(user, secret) //skicka ej med password
         // console.log(success + ' hej');
         // console.log(token + ' hejdå');
+        // console.log(token);
         
+        
+        // console.log('Logged in as ' + user.username);
         
         return {user, token};
     } catch (error) {
@@ -59,6 +63,8 @@ function postUserModel(username, password, role) {
             
 
             const insert = await db.users.insert(credentials);
+            // console.log('Registered user ' + insert.username);
+            
             resolve(insert);
         } catch (error) {
             reject(error)
@@ -73,6 +79,8 @@ function editUserModel(id, user) {
 
             const post = await db.users.update({ _id: id }, { $set: user });
             // console.log(post + " user");
+            console.log('Edited: ' + user.username);
+            
 
             resolve(post);
         } catch (error) {
@@ -87,7 +95,7 @@ function deleteUserModel(id) {
         try {
 
             const removed = await db.users.remove({ _id: id });
-            // console.log(removed + " post");
+            console.log('removed: ' + id);
 
             resolve(removed);
         } catch (error) {

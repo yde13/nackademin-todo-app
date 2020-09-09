@@ -1,0 +1,15 @@
+{"title":"Todolist 1","listID":"1","_id":"1"}
+{"title":"Todolist 2","listID":"2","_id":"2"}
+{"$$deleted":true,"_id":"1"}
+{"$$deleted":true,"_id":"2"}
+{"title":"Todolist 1","listID":"1","_id":"4"}
+{"title":"Todolist 2","listID":"2","_id":"2"}
+{"$$deleted":true,"_id":"2"}
+{"$$deleted":true,"_id":"4"}
+{"title":"Todolist 1","listID":"1","_id":"1"}
+{"$$deleted":true,"_id":"1"}
+{"title":"Todolist 1","listID":"2","_id":"1"}
+{"title":"Todolist 3","listID":"2","_id":"1"}
+{"$$deleted":true,"_id":"1"}
+{"title":"Todolist 1","listID":"2","_id":"1"}
+{"$$deleted":true,"_id":"1"}

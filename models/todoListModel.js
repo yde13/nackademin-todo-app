@@ -4,24 +4,82 @@ const db = require('../database/database.js');
 // require('dotenv').config()
 
 function getTodoListModel() {
-
+    return new Promise(async(resolve, reject) => {
+        
+        try {
+            let lists = await db.todoList.find({});
+            // console.log(posts);
+            resolve(lists);
+        } catch (error) {
+            reject(error);
+        } 
+    }); 
 }
 
-function addTodoListModel() {
-
+function getSingleTodoListModel(id) {
+    return new Promise(async(resolve, reject) => {
+        
+        try {
+            let lists = await db.posts.find({listID: id});
+            console.log(lists);
+            resolve(lists);
+        } catch (error) {
+            reject(error);
+        } 
+    }); 
 }
 
-function editTodoListModel () {
-    
+function addTodoListModel(todoList) {
+    return new Promise(async(resolve, reject) => {
+        
+        try {
+            let lists = await db.todoList.insert(todoList);
+            // console.log(post);
+
+            resolve(lists);
+        } catch (error) {
+            reject(error);
+        }
+    })
 }
 
-function deleteTodoListModel () {
+function editTodoListModel (id, todoList) {
+    return new Promise(async(resolve, reject) => {
 
+        try {
+            let lists = await db.todoList.update({_id :id},{ $set: todoList });
+            console.log('edited ' + lists);
+
+            resolve(lists);
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+function deleteTodoListModel (id) {
+    return new Promise(async(resolve, reject) => {
+        try {
+
+            const removedList = await db.todoList.remove({_id : id});
+            // console.log(removed + " post");
+
+            resolve(removedList);
+        } catch (error) {
+            reject(error)
+        }
+    });
+}
+
+function clear() {
+    db.todoList.remove({}, {multi: true})
 }
 
 module.exports = {
     getTodoListModel,
+    getSingleTodoListModel,
     addTodoListModel,
     editTodoListModel,
-    deleteTodoListModel
+    deleteTodoListModel,
+    clear
 }

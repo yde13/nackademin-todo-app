@@ -1,26 +1,75 @@
-const model = require('../models/userModel');
+const model = require('../models/todoListModel');
 // const bcrypt = require('bcryptjs')
 // const jwt = require('jsonwebtoken')
 // require('dotenv').config()
 
-function getTodoListController() {
+async function getTodoListController(req, res) {
+
+
+    let todoList = await model.getTodoListModel()
+
+    res.json(todoList)
+}
+
+async function getSingleTodoListController(req, res) {
+
+    let id = req.params.id
+
+
+    let todoList = await model.getSingleTodoListModel(id)
+
+    res.json(todoList)
+}
+
+function addTodoListController(req, res) {
+
+    try {
+        let todoList = {
+            title: req.body.title,
+            listID: req.body.listID
+        }
+
+        console.log(todoList);
+
+        let result = model.addTodoListModel(todoList)
+        res.json(result)
+
+    } catch (error) {
+        res.json({ error: error.message })
+    }
 
 }
 
-function addTodoListController() {
+function editTodoListController(req, res) {
 
+    try {
+        var id = req.params.id;
+
+        let todoList = {
+            title: req.body.title
+        }
+
+        let updatedTodoList = model.editTodoListModel(id, todoList)
+
+        res.json(JSON.stringify(updatedTodoList));
+    } catch (error) {
+        res.json({ error: error.message })
+    }
 }
 
-function editTodoListController () {
-    
-}
-
-function deleteTodoListController () {
-
+function deleteTodoListController(req, res) {
+    try {
+        let id = req.params.id;
+        let deletedList = model.deleteTodoListModel(id)
+        res.json({ message: 'Deleted: ', deletedList })
+    } catch (error) {
+        res.json({ error: error.message })
+    }
 }
 
 module.exports = {
     getTodoListController,
+    getSingleTodoListController,
     addTodoListController,
     editTodoListController,
     deleteTodoListController

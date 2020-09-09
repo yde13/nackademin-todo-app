@@ -7,7 +7,7 @@ const router = new Router()
 
 
 router.get('/todoList',   controller.getTodoListController) //authorization, user
-//router.get('/posts/:id', controller.getSinglePostController)
+router.get('/todoList/:id', controller.getSingleTodoListController)
 router.post('/todoList', controller.addTodoListController)
 router.delete('/todoList/:id',  controller.deleteTodoListController)
 router.put('/todoList/:id', controller.editTodoListController)

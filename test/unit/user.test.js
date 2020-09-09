@@ -1,4 +1,4 @@
-const userModel = require('../models/userModel');
+const userModel = require('../../models/userModel');
 const bcrypt = require('bcryptjs')
 
 //const userController = require('../controllers/userController')
@@ -10,7 +10,7 @@ const chaiHttp = require('chai-http')
 chai.use(chaiHttp)
 
 const { expect, request, should } = chai
-const app = require('../app.js')
+// const app = require('../../app.js')
 
 
 describe('users', () => {
@@ -24,20 +24,20 @@ describe('users', () => {
         let role = 'Admin'
 
         let credentials = await userModel.postUserModel(
-            username, password, role
-            )
+            username, 
+            password, 
+            role
+        )
 
         
 
         // console.log(credentials);
-        const decryptPassword = bcrypt.compareSync('philip', credentials.password)
         // console.log(decryptPassword + ' decrypt');
-        let pass = 'philip'
 
         
-        const user = await userModel.getUserModel(credentials.username, pass)
+        const result = await userModel.getUserModel(credentials.username, password)
         
-        user.user.username.should.equal(credentials.username) //lite weird med user.user
+        result.user.username.should.equal(credentials.username) //lite weird med user.user
     })
 
     it('Should post one user and register', async () => {

@@ -1,4 +1,4 @@
-const taskModel = require('../models/taskModel')
+const taskModel = require('../../models/taskModel')
 require('chai').should()
 
 describe('Task', () => {
@@ -7,18 +7,18 @@ describe('Task', () => {
     })
 
     it('Should get all todos', async () => {
-        await taskModel.addTaskModel({
+        await taskModel.addTaskModel([{
             title: "Städa",
             done: false,
             created: "2020-07-06",
             _id: "1"
-        })
-        await taskModel.addTaskModel({
+        },
+        {
             title: "Laga mat",
             done: true,
             created: "2020-03-12",
             _id: "2"
-        })
+        }])
         const getTodos = await taskModel.getTaskModel()
         getTodos.should.eql([ //should.EQL eftersom det är arrays!
             {
@@ -65,7 +65,7 @@ describe('Task', () => {
             done: true
         }
         const updateTodo = await taskModel.editTaskModel(id, todo)
-        updateTodo.should.equal(1) //1 = true
+        updateTodo.should.equal(1) //1 = true, how many posts u have edited
     })
 
     it('Should delete a todo', async () => {

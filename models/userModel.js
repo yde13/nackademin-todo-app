@@ -79,7 +79,8 @@ function editUserModel(id, user) {
 
             const post = await db.users.update({ _id: id }, { $set: user });
             // console.log(post + " user");
-            console.log('Edited: ' + user.username);
+            
+            console.log('Edited: ' + user.username + ' ' + post);            
             
 
             resolve(post);

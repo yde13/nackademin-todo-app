@@ -1,4 +1,6 @@
 const userModel = require('../../models/userModel');
+const taskModel = require('../../models/taskModel');
+
 const bcrypt = require('bcryptjs')
 const chai = require('chai');
 const chaiHttp = require('chai-http')
@@ -13,6 +15,12 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
     let password = 'root'
     let role = 'Admin'
 
+    let title = 'Post'
+    let done = false
+    let created = '2020-06-04'
+    let urgent = false
+    let listID = '1'
+
     before(async () => {
         await userModel.clear()
         currentTest.user = await userModel.postUserModel(
@@ -21,6 +29,15 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
             role
         )
 
+        currentTest.task = await taskModel.addTaskModel({
+            title,
+            done,
+            created,
+            urgent,
+            listID
+        })
+            // console.log(currentTest.task);
+            
         currentTest.userID = currentTest.user._id
 
         currentTest.token =
@@ -32,14 +49,15 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
     it('Should get todos authorized integration test', () => {
 
         let token = currentTest.token.token;
-
-        let data = currentTest.user;
+        // console.log(JSON.stringify(currentTest.task));
+        
+        let data = currentTest.task;
         request(app)
             .get('/task')
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', `application/json`)
             .send(data)
-            .end((err, res) => {
+            .end((err, res) => {                
                 expect(res).to.have.status(200)
                 expect(res).to.be.json
 
@@ -50,7 +68,7 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
 
         let token = currentTest.token.token;
 
-        let data = currentTest.user;
+        let data = currentTest.task;
         request(app)
             .post('/task')
             .set('Authorization', `Bearer ${token}`)
@@ -67,9 +85,9 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
 
         let token = currentTest.token.token;
 
-        let id = currentTest.user._id
+        let id = currentTest.task._id
 
-        let data = {username: 'User'}
+        let data = {title: 'Städa'}
 
         request(app)
             .put(`/task/${id}`)
@@ -88,15 +106,15 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
 
         let token = currentTest.token.token;
 
-        let id = currentTest.user._id
+        let id = currentTest.task._id
 
-        let data = currentTest.user;
+        let data = currentTest.task;
         request(app)
             .delete(`/task/${id}`)
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', `application/json`)
             .send(data)
-            .end((err, res) => {
+            .end((err, res) => {                
                 expect(res).to.have.status(200)
                 expect(res).to.be.json
                 expect(res.body).to.have.keys(['data'])

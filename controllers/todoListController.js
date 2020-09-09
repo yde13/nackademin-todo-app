@@ -17,7 +17,8 @@ async function getSingleTodoListController(req, res) {
 
 
     let todoList = await model.getSingleTodoListModel(id)
-
+    // console.log(todoList, "hej"); //detta loggas i add todo på integration test
+    
     res.json(todoList)
 }
 
@@ -29,7 +30,7 @@ function addTodoListController(req, res) {
             listID: req.body.listID
         }
 
-        console.log(todoList);
+        // console.log(todoList);
 
         let result = model.addTodoListModel(todoList)
         res.json(result)
@@ -50,7 +51,8 @@ function editTodoListController(req, res) {
         }
 
         let updatedTodoList = model.editTodoListModel(id, todoList)
-
+        // console.log(todoList);
+        
         res.json(JSON.stringify(updatedTodoList));
     } catch (error) {
         res.json({ error: error.message })
@@ -61,7 +63,7 @@ function deleteTodoListController(req, res) {
     try {
         let id = req.params.id;
         let deletedList = model.deleteTodoListModel(id)
-        res.json({ message: 'Deleted: ', deletedList })
+        res.json({ data: deletedList })
     } catch (error) {
         res.json({ error: error.message })
     }

@@ -21,7 +21,7 @@ function getSingleTodoListModel(id) {
         
         try {
             let lists = await db.posts.find({listID: id});
-            console.log(lists);
+            //  console.log(lists);
             resolve(lists);
         } catch (error) {
             reject(error);
@@ -34,7 +34,7 @@ function addTodoListModel(todoList) {
         
         try {
             let lists = await db.todoList.insert(todoList);
-            // console.log(post);
+            // console.log(lists);
 
             resolve(lists);
         } catch (error) {
@@ -48,7 +48,8 @@ function editTodoListModel (id, todoList) {
 
         try {
             let lists = await db.todoList.update({_id :id},{ $set: todoList });
-            console.log('edited ' + lists);
+            console.log('Edited: ' + todoList.title);
+            
 
             resolve(lists);
         } catch (error) {

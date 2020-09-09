@@ -26,7 +26,7 @@ function addTaskController(req, res) {
             urgent: false,
             listID: req.body.listID
         }
-        console.log(task);
+        // console.log(task);
 
         let result = model.addTaskModel(task)
         res.json(task)
@@ -43,9 +43,9 @@ function editTaskController(req, res) {
             title: req.body.title,
             done: req.body.done
         }
-        console.log(req.body)
+        // console.log(req.body)
         const updatedToDo = model.editTaskModel(id, task)
-        console.log(" Todo uppdaterad");
+        // console.log(" Todo uppdaterad");
         res.json(updatedToDo);
     } catch (error) {
         console.log({ error: error.message })

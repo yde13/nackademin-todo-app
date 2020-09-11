@@ -23,10 +23,9 @@ function authorization(req, res, next) {
 }
 
 function user(req, res, next) {
-    // console.log(req);
 
 
-    console.log('Role: ', req.user.role)
+    // console.log('Role: ', req.user.role)
     if (req.user.role == 'Admin' || req.user.role == 'User') {
         next()
     } else {
@@ -36,7 +35,7 @@ function user(req, res, next) {
 }
 
 function admin(req, res, next) {
-    console.log('Role: ', req.user.role)
+    // console.log('Role: ', req.user.role)
     if (req.user.role == 'Admin') {
         next()
     } else {

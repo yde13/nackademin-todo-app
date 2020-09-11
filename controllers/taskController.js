@@ -4,7 +4,6 @@ const model = require('../models/taskModel');
 async function getTaskController(req, res) {
 
     const post = await model.getTaskModel()
-    // console.log(req.user);
 
     res.json(post)
 }; 
@@ -13,10 +12,9 @@ async function getSingleTaskController (req, res) {
     let id = req.params.id
 
 
-    let todoList = await model.getSingleTaskModel(id)
-    // console.log(todoList, "hej"); //detta loggas i add todo på integration test
+    let task = await model.getSingleTaskModel(id)
     
-    res.json(todoList)
+    res.json(task)
 }
 
 function addTaskController(req, res) {
@@ -37,10 +35,9 @@ function addTaskController(req, res) {
             listID: req.body.listID,
             createdBy: req.user._id
         }
-        // console.log(task);
 
         let result = model.addTaskModel(task)
-        res.json(task)
+        res.json(result)
 
     } catch (error) {
         res.json({ error: error.message })
@@ -54,31 +51,12 @@ function editTaskController(req, res) {
             title: req.body.title,
             done: req.body.done
         }
-        // console.log(req.body)
         const updatedToDo = model.editTaskModel(id, task)
-        // console.log(" Todo uppdaterad");
         res.json(updatedToDo);
     } catch (error) {
         console.log({ error: error.message })
     }
 };
-
-// async function taskIsDoneController(req, res) {
-//     try {
-//         var id = req.params._id;
-//         let done = {
-//             done: req.body.done,
-//         }
-//         console.log(req.body)
-//         const updateToDo = await model.taskIsDoneModel(id, done)
-//         console.log(updateToDo + " Todo done");
-
-//         res.json(updateToDo);
-
-//     } catch (error) {
-//         res.json({ error: error.message });
-//     }
-// }
 
 function deleteTaskController(req, res) {
     try {
@@ -96,5 +74,4 @@ module.exports = {
     addTaskController,
     editTaskController,
     deleteTaskController,
-    //taskIsDoneController
 }

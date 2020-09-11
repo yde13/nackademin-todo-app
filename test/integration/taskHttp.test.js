@@ -14,19 +14,22 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
     let username = 'yde'
     let password = 'root'
     let role = 'Admin'
+    let _id = 1
 
     let title = 'Post'
     let done = false
     let created = '2020-06-04'
     let urgent = false
     let listID = '1'
+    let createdBy = '1'
 
     before(async () => {
         await userModel.clear()
         currentTest.user = await userModel.postUserModel(
             username,
             password,
-            role
+            role,
+            _id
         )
 
         currentTest.task = await taskModel.addTaskModel({
@@ -34,7 +37,8 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
             done,
             created,
             urgent,
-            listID
+            listID,
+            createdBy
         })
             // console.log(currentTest.task);
             
@@ -54,6 +58,23 @@ describe('Integration test on tasks', () => { //testar jag ens tasks här??
         let data = currentTest.task;
         request(app)
             .get('/task')
+            .set('Authorization', `Bearer ${token}`)
+            .set('Content-Type', `application/json`)
+            .send(data)
+            .end((err, res) => {                
+                expect(res).to.have.status(200)
+                expect(res).to.be.json
+
+            })
+    })
+
+    it('Should get single todo authorized integration test', () => {
+
+        let token = currentTest.token.token;
+        let id = currentTest.user._id        
+        let data = currentTest.task;
+        request(app)
+            .get(`/task/${id}`)
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', `application/json`)
             .send(data)

@@ -7,7 +7,6 @@ async function getTodoListController(req, res) {
 
 
     let todoList = await model.getTodoListModel()
-console.log(req.user);
 
     res.json(todoList)
 }
@@ -18,7 +17,6 @@ async function getSingleTodoListController(req, res) {
 
 
     let todoList = await model.getSingleTodoListModel(id)
-    // console.log(todoList, "hej"); //detta loggas i add todo på integration test
     
     res.json(todoList)
 }
@@ -32,7 +30,6 @@ function addTodoListController(req, res) {
             createdBy: req.user._id
         }
 
-        // console.log(todoList);
 
         let result = model.addTodoListModel(todoList)
         res.json(result)
@@ -53,7 +50,6 @@ function editTodoListController(req, res) {
         }
 
         let updatedTodoList = model.editTodoListModel(id, todoList)
-        // console.log(todoList);
         
         res.json(JSON.stringify(updatedTodoList));
     } catch (error) {

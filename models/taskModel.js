@@ -6,7 +6,6 @@ function getTaskModel () {
         try {
 
             const posts = await db.posts.find({});
-            // console.log(posts);
 
             resolve(posts);
         } catch (error) {
@@ -20,7 +19,6 @@ function getSingleTaskModel(id) {
         
         try {
             let lists = await db.posts.find({createdBy: id});
-            //  console.log(lists);
             resolve(lists);
         } catch (error) {
             reject(error);
@@ -34,7 +32,6 @@ function addTaskModel(task) {
         try {
 
             const post = await db.posts.insert(task);
-            // console.log(post);
 
             resolve(post);
         } catch (error) {
@@ -50,8 +47,6 @@ function editTaskModel(id, task) {
         try {
 
             const post = await db.posts.update({_id :id},{ $set: task });
-            // console.log(post + " post");
-            console.log('edited ' + post);
             
             resolve(post);
         } catch (error) {
@@ -60,18 +55,6 @@ function editTaskModel(id, task) {
     });
 }
 
-// function taskIsDoneModel (id, done) {
-//     return new Promise((resolve, reject) => {
-//         db.update({ _id: id }, { $set: done }, { returnUpdatedDocs: true }, (err, num, updateDocs) => {
-//             if (err) {
-//                 reject(err)
-//             } else {
-//                 console.log(updateDocs);
-//                 resolve(updateDocs)
-//             }
-//         })
-//     })
-// }
 
 function deleteTaskModel (id) {
 
@@ -79,7 +62,6 @@ function deleteTaskModel (id) {
         try {
 
             const removed = await db.posts.remove({_id : id});
-            // console.log(removed + " post");
 
             resolve(removed);
         } catch (error) {

@@ -6,28 +6,22 @@ require('dotenv').config()
 
 async function getUserModel(username, password) {
     try {
-        
-        
+
         const secret = process.env.SECRET;
-        
-        
 
-       try {
-        const user = await db.users.findOne({ username: username })
-        
-        const success = bcrypt.compareSync(password, user.password)
-        const token = jwt.sign(user, secret) 
-        return {user, token, success};
+        try {
+            const user = await db.users.findOne({ username: username })
+
+            const success = bcrypt.compareSync(password, user.password)
+            const token = jwt.sign(user, secret)
+            return { user, token, success };
 
 
-       } catch (error) {
-           console.log(error);
-           return error
-           
-       }
+        } catch (error) {
+            console.log(error);
+            return error
+        }
 
-
-        
     } catch (error) {
         return error
     }
@@ -39,30 +33,18 @@ function postUserModel(username, password, role) {
     return new Promise(async (resolve, reject) => {
 
         try {
-            // const user = password
-            // console.log('här');
-            
-            // console.log( password);
-            // console.log( username);
-            
-            
-            // const password = user
-            // console.log(password);
+ 
             const hashedPassword = bcrypt.hashSync(password, 10)
-            // console.log(hashedPassword);
 
             credentials = {
                 username: username,
                 password: hashedPassword,
                 role: role,
             }
-            // const user = username
-            // console.log('hje ' + user.password);
-            
+
 
             const insert = await db.users.insert(credentials);
-            // console.log('Registered user ' + insert.username);
-            
+
             resolve(insert);
         } catch (error) {
             reject(error)
@@ -76,10 +58,6 @@ function editUserModel(id, user) {
         try {
 
             const post = await db.users.update({ _id: id }, { $set: user });
-            // console.log(post + " user");
-            
-            console.log('Edited: ' + user.username + ' ' + post);            
-            
 
             resolve(post);
         } catch (error) {
@@ -94,7 +72,6 @@ function deleteUserModel(id) {
         try {
 
             const removed = await db.users.remove({ _id: id });
-            console.log('removed: ' + id);
 
             resolve(removed);
         } catch (error) {

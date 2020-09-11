@@ -1,12 +1,8 @@
-{"title":"List 2","listID":"1","_id":"BnoB8d7nftRPm6Ws"}
-{"title":"List 1","listID":"1","_id":"WTOziYtYx9PPcyUf"}
-{"title":"List 1","listID":"1","_id":"HepsNokcqPGTtKdY"}
-{"title":"List 1","listID":"1","_id":"j2xJB8gTbxhun51w"}
-{"title":"List 2","listID":"1","_id":"HepsNokcqPGTtKdY"}
-{"$$deleted":true,"_id":"HepsNokcqPGTtKdY"}
-{"$$deleted":true,"_id":"BnoB8d7nftRPm6Ws"}
-{"$$deleted":true,"_id":"WTOziYtYx9PPcyUf"}
-{"$$deleted":true,"_id":"j2xJB8gTbxhun51w"}
+{"title":"List 1","listID":"1","_id":"MkCA8yznhFxV1b9b"}
+{"title":"List 1","listID":"1","_id":"7q187HHIgkYGTNnu"}
+{"title":"List 2","listID":"1","_id":"MkCA8yznhFxV1b9b"}
+{"$$deleted":true,"_id":"MkCA8yznhFxV1b9b"}
+{"$$deleted":true,"_id":"7q187HHIgkYGTNnu"}
 {"title":"Todolist 1","listID":"1","_id":"1"}
 {"title":"Todolist 2","listID":"2","_id":"2"}
 {"$$deleted":true,"_id":"1"}

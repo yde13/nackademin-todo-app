@@ -1,16 +1,12 @@
 {"title":"todo list","done":false,"created":"1998","urgent":false,"listID":"1","_id":"1"}
-{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"M1tAVsGpjKQw5D5S"}
-{"title":"Post","done":false,"created":"2020-8-9 Time: 12:12:25","urgent":false,"listID":"1","_id":"kNocsiMvCdzxlYRT"}
-{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"RlkPFs2ZEtMBkauX"}
-{"title":"Post","done":false,"created":"2020-8-9 Time: 12:12:37","urgent":false,"listID":"1","_id":"hD1l3bwvOxvIC1rI"}
-{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","_id":"RlkPFs2ZEtMBkauX"}
-{"$$deleted":true,"_id":"RlkPFs2ZEtMBkauX"}
-{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"Zw6N6Ly3F9e4A3Br"}
+{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"kr83y8MZUFTnV2Vm"}
+{"title":"Post","done":false,"created":"2020-8-11 Time: 9:20:22","urgent":false,"listID":"1","_id":"4a4jsPMZmDpjKP0X"}
+{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","_id":"kr83y8MZUFTnV2Vm"}
+{"$$deleted":true,"_id":"kr83y8MZUFTnV2Vm"}
+{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"jEEo9xWpOpWfo7Uv"}
 {"$$deleted":true,"_id":"1"}
-{"$$deleted":true,"_id":"M1tAVsGpjKQw5D5S"}
-{"$$deleted":true,"_id":"Zw6N6Ly3F9e4A3Br"}
-{"$$deleted":true,"_id":"hD1l3bwvOxvIC1rI"}
-{"$$deleted":true,"_id":"kNocsiMvCdzxlYRT"}
+{"$$deleted":true,"_id":"4a4jsPMZmDpjKP0X"}
+{"$$deleted":true,"_id":"jEEo9xWpOpWfo7Uv"}
 {"title":"Städa","done":false,"created":"2020-07-06","_id":"1"}
 {"title":"Laga mat","done":true,"created":"2020-03-12","_id":"2"}
 {"$$deleted":true,"_id":"1"}

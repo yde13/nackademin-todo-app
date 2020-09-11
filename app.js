@@ -5,9 +5,11 @@ const { authorization, user, admin } = require('./middlewares/auth')
 
 
 //Middelware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'))
+
 
 //Frontend
 app.get('/', function (req, res) {

@@ -9,7 +9,7 @@ function authorization(req, res, next) {
 
     const token = req.headers.authorization.replace("Bearer ", "");
 
-    
+
 
     try {
 
@@ -17,9 +17,10 @@ function authorization(req, res, next) {
 
         req.user = payload;
 
+
         next();
     } catch (error) {
-        
+
         res.sendStatus(403);
     }
 }
@@ -27,8 +28,8 @@ function authorization(req, res, next) {
 
 function user(req, res, next) {
     // console.log(req);
-    
-        
+
+
     console.log('Role: ', req.user.role)
     if (req.user.role == 'Admin' || req.user.role == 'User') {
         next()
@@ -40,7 +41,7 @@ function user(req, res, next) {
 
 function admin(req, res, next) {
     console.log('Role: ', req.body.role)
-    if(req.user.role == 'Admin'){
+    if (req.user.role == 'Admin') {
         next()
     } else {
         console.log('You are not an Admin')
@@ -52,6 +53,7 @@ function admin(req, res, next) {
 module.exports = {
     authorization,
     admin,
-    user
+    user,
+    
 };
 

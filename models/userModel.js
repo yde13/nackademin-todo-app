@@ -7,29 +7,27 @@ require('dotenv').config()
 async function getUserModel(username, password) {
     try {
         
-        // console.log(username + '      ' + password + ' höhöhöhöh');
         
         const secret = process.env.SECRET;
-        // const passwordAttempt = req.body.password;
-        // const user = await model.getUserModel(username);
-       
-
-        const user = await db.users.findOne({ username: username })
-        // console.log(user.password + ' whut');
-        // console.log(password + ' weird');
         
-        // console.log(user.password + '    lösen');
+        
+
+       try {
+        const user = await db.users.findOne({ username: username })
         
         const success = bcrypt.compareSync(password, user.password)
-        const token = jwt.sign(user, secret) //skicka ej med password
-        // console.log(success + ' hej');
-        // console.log(token + ' hejdå');
-        // console.log(token);
+        const token = jwt.sign(user, secret) 
+        return {user, token, success};
+
+
+       } catch (error) {
+           console.log(error);
+           return error
+           
+       }
+
+
         
-        
-        // console.log('Logged in as ' + user.username);
-        
-        return {user, token};
     } catch (error) {
         return error
     }

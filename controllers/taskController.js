@@ -4,10 +4,20 @@ const model = require('../models/taskModel');
 async function getTaskController(req, res) {
 
     const post = await model.getTaskModel()
-    console.log(req.user);
+    // console.log(req.user);
 
     res.json(post)
-}; //skicka role så att man kan se om det är en admin eller user
+}; 
+
+async function getSingleTaskController (req, res) {
+    let id = req.params.id
+
+
+    let todoList = await model.getSingleTaskModel(id)
+    // console.log(todoList, "hej"); //detta loggas i add todo på integration test
+    
+    res.json(todoList)
+}
 
 function addTaskController(req, res) {
     try {
@@ -82,6 +92,7 @@ function deleteTaskController(req, res) {
 
 module.exports = {
     getTaskController,
+    getSingleTaskController,
     addTaskController,
     editTaskController,
     deleteTaskController,

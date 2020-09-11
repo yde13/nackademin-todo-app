@@ -9,14 +9,11 @@ function authorization(req, res, next) {
 
     const token = req.headers.authorization.replace("Bearer ", "");
 
-
-
     try {
 
         const payload = jwt.verify(token, secret)
 
         req.user = payload;
-
 
         next();
     } catch (error) {
@@ -24,7 +21,6 @@ function authorization(req, res, next) {
         res.sendStatus(403);
     }
 }
-
 
 function user(req, res, next) {
     // console.log(req);
@@ -40,7 +36,7 @@ function user(req, res, next) {
 }
 
 function admin(req, res, next) {
-    console.log('Role: ', req.body.role)
+    console.log('Role: ', req.user.role)
     if (req.user.role == 'Admin') {
         next()
     } else {
@@ -50,10 +46,34 @@ function admin(req, res, next) {
     }
 }
 
+function loggedInPersonOrAdmin(req, res, next) {
+    
+    if (req.params.id == req.user._id || req.user.role == 'Admin') {
+        next()
+
+    } else {
+        console.log('You are not who u are')
+        return res.sendStatus(403)
+    }
+}
+
+function loggedInPerson(req, res, next) {
+    
+    if (req.params.id == req.user._id) {
+        next()
+
+    } else {
+        console.log('You are not who u are')
+        return res.sendStatus(403)
+    }
+}
+
 module.exports = {
     authorization,
     admin,
     user,
+    loggedInPerson,
+    loggedInPersonOrAdmin
     
 };
 

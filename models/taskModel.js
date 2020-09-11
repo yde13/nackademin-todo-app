@@ -15,6 +15,19 @@ function getTaskModel () {
     });    
 }
 
+function getSingleTaskModel(id) {
+    return new Promise(async(resolve, reject) => {
+        
+        try {
+            let lists = await db.posts.find({createdBy: id});
+            //  console.log(lists);
+            resolve(lists);
+        } catch (error) {
+            reject(error);
+        } 
+    }); 
+}
+
 function addTaskModel(task) {
     return new Promise(async(resolve, reject) => {
         
@@ -81,6 +94,7 @@ function clear() {
 
 module.exports = {
     getTaskModel,
+    getSingleTaskModel,
     addTaskModel,
     editTaskModel,
     deleteTaskModel,

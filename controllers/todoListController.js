@@ -7,6 +7,7 @@ async function getTodoListController(req, res) {
 
 
     let todoList = await model.getTodoListModel()
+console.log(req.user);
 
     res.json(todoList)
 }
@@ -27,7 +28,8 @@ function addTodoListController(req, res) {
     try {
         let todoList = {
             title: req.body.title,
-            listID: req.body.listID
+            listID: req.body.listID,
+            createdBy: req.user._id
         }
 
         // console.log(todoList);

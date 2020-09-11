@@ -36,6 +36,45 @@ describe('Task', () => {
         ])
     })
 
+    it('Should get a single todo', async () => {
+        await taskModel.addTaskModel([{
+            title: 'todo 1',
+            done: false,
+            created: '1998',
+            urgent: false,
+            listID: '1',
+            createdBy: 'Hugo',
+            _id: '1'
+
+        },
+        {
+            title: 'todo 2',
+            done: true,
+            created: '1993',
+            urgent: false,
+            listID: '1',
+            createdBy: 'Philip',
+            _id: '2'
+        }
+        ])
+
+        let id = 'Philip'
+        const getSingleTask = await taskModel.getSingleTaskModel(id)
+
+        getSingleTask.should.eql( //should.EQL eftersom det är arrays!
+            [{
+                title: 'todo 2',
+                done: true,
+                created: '1993',
+                urgent: false,
+                listID: '1',
+                createdBy: 'Philip',
+                _id: '2'
+
+            }])
+
+    })
+
     it('Should add a todo', async () => {
         const todo = {
             title: "Diska",
@@ -54,10 +93,10 @@ describe('Task', () => {
 
     it('Should update a todo', async () => {
         await taskModel.addTaskModel({
-            title:"Tvätta",
+            title: "Tvätta",
             done: false,
-            created:"2020-04-24",
-            _id:"3"
+            created: "2020-04-24",
+            _id: "3"
         })
         let id = '3'
         let todo = {
@@ -70,10 +109,10 @@ describe('Task', () => {
 
     it('Should delete a todo', async () => {
         await taskModel.addTaskModel({
-            title:"Tvätta",
+            title: "Tvätta",
             done: false,
-            created:"2020-04-24",
-            _id:"4"
+            created: "2020-04-24",
+            _id: "4"
         })
         let id = '4'
         const deleteTodo = await taskModel.deleteTaskModel(id)

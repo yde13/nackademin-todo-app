@@ -4,7 +4,7 @@ const model = require('../models/taskModel');
 async function getTaskController(req, res) {
 
     const post = await model.getTaskModel()
-    // console.log(post);
+    console.log(req.user);
 
     res.json(post)
 }; //skicka role så att man kan se om det är en admin eller user
@@ -24,7 +24,8 @@ function addTaskController(req, res) {
             done: false,
             created: all,
             urgent: false,
-            listID: req.body.listID
+            listID: req.body.listID,
+            createdBy: req.user._id
         }
         // console.log(task);
 

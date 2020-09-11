@@ -50,10 +50,6 @@ function login() {
                         fetchData()
                     }
 
-                    
-
-                    // headers.append('Authorization', `Bearer ${result.data.token}`) //detta funkar tydligen inte
-
                 } else {
                     console.log('Something went wrong!');
                 }

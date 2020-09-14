@@ -8,30 +8,42 @@ describe('Task', () => {
 
     it('Should get all todos', async () => {
         await taskModel.addTaskModel([{
-            title: "Städa",
+            title: 'todo 1',
             done: false,
-            created: "2020-07-06",
-            _id: "1"
+            created: '1998',
+            urgent: false,
+            listID: '1',
+            createdBy: 'Hugo',
+            _id: '1'
         },
         {
-            title: "Laga mat",
-            done: true,
-            created: "2020-03-12",
-            _id: "2"
+            title: 'todo 2',
+            done: false,
+            created: '1998',
+            urgent: false,
+            listID: '1',
+            createdBy: 'Philip',
+            _id: '2'
         }])
         const getTodos = await taskModel.getTaskModel()
         getTodos.should.eql([ //should.EQL eftersom det är arrays!
             {
-                title: "Städa",
+                title: 'todo 1',
                 done: false,
-                created: "2020-07-06",
-                _id: "1"
+                created: '1998',
+                urgent: false,
+                listID: '1',
+                createdBy: 'Hugo',
+                _id: '1'
             },
             {
-                title: "Laga mat",
-                done: true,
-                created: "2020-03-12",
-                _id: "2"
+                title: 'todo 2',
+                done: false,
+                created: '1998',
+                urgent: false,
+                listID: '1',
+                createdBy: 'Philip',
+                _id: '2'
             },
         ])
     })

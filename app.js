@@ -16,10 +16,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/views/index.html');
 });
 
-app.get('/todos', function (req, res) { //authorization, user,
-  res.sendFile(__dirname + '/public/views/todos.html');
-});
-
 //Routes
 app.use('/', routes)
 

@@ -1,14 +1,20 @@
 {"title":"todo list","done":false,"created":"1998","urgent":false,"listID":"1","_id":"1"}
-{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"ahpMy0RDp2BKIuQz"}
-{"title":"Post","done":false,"created":"2020-8-11 Time: 15:9:19","urgent":false,"listID":"1","createdBy":"k87b365mem0h68ls","_id":"R72eS550TjCLEpmi"}
-{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"ahpMy0RDp2BKIuQz"}
-{"$$deleted":true,"_id":"ahpMy0RDp2BKIuQz"}
-{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"nyb0Qs6kRgzFRlGk"}
+{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"PRSdWdhRmxP5HuZz"}
+{"title":"Post","done":false,"created":"2020-8-13 Time: 15:29:49","urgent":false,"listID":"1","createdBy":"N92MxwBPwTzBo3Lt","_id":"jblRfctQWaWDV29t"}
+{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"PRSdWdhRmxP5HuZz"}
+{"$$deleted":true,"_id":"PRSdWdhRmxP5HuZz"}
+{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"5TaffWjjeA1Yevw0"}
 {"$$deleted":true,"_id":"1"}
-{"$$deleted":true,"_id":"R72eS550TjCLEpmi"}
-{"$$deleted":true,"_id":"nyb0Qs6kRgzFRlGk"}
-{"title":"Städa","done":false,"created":"2020-07-06","_id":"1"}
-{"title":"Laga mat","done":true,"created":"2020-03-12","_id":"2"}
+{"$$deleted":true,"_id":"5TaffWjjeA1Yevw0"}
+{"$$deleted":true,"_id":"jblRfctQWaWDV29t"}
+{"title":"todo 1","done":true,"created":"1998","urgent":false,"listID":"1","createdBy":"321","_id":"1"}
+{"$$deleted":true,"_id":"1"}
+{"title":"todo 2","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"123","_id":"2"}
+{"$$deleted":true,"_id":"2"}
+{"title":"todo 2","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"123","_id":"2"}
+{"$$deleted":true,"_id":"2"}
+{"title":"todo 1","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"Hugo","_id":"1"}
+{"title":"todo 2","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"Philip","_id":"2"}
 {"$$deleted":true,"_id":"1"}
 {"$$deleted":true,"_id":"2"}
 {"title":"todo 1","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"Hugo","_id":"1"}

@@ -51,8 +51,16 @@ function deleteGdprModel (id) {
     });
 }
 
+function clear() {
+    db.posts.remove({}, {multi: true})
+    db.users.remove({}, {multi: true})
+    db.todoList.remove({}, {multi: true})
+
+}
+
 module.exports = {
     getGdprModel,
     getSingleGdprModel,
-    deleteGdprModel
+    deleteGdprModel,
+    clear
 }

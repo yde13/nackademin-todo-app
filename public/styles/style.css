@@ -30,10 +30,15 @@ h1 {
 
 }
 
+.everythingContainer {
+    display: none;
+}
+
 .todoContainer {
     border: 2px solid grey;
     padding: 1%;
     margin: 1%;
+    display: none
 }
 
 .todos {

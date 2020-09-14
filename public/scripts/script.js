@@ -1,6 +1,14 @@
 
 
+if (sessionStorage.getItem("username") !== undefined) {
+    console.log('ja');
+    document.querySelector('.loggedInAs').innerHTML = `Logged in as ${sessionStorage.getItem("username")}`
 
+} else {
+    console.log('nej');
+    // document.querySelector('#gdprError').innerHTML = "You need to login"
+
+}
 
 
 function login() {
@@ -30,6 +38,8 @@ function login() {
                     // Store
                     sessionStorage.setItem("token", result.data.token);
                     sessionStorage.setItem('id', result.data.user._id)
+                    sessionStorage.setItem('username', result.data.user.username)
+
                     // Retrieve
                     // document.getElementById("result").innerHTML = sessionStorage.getItem("token");
                     document.getElementById("granted").innerHTML =
@@ -41,13 +51,14 @@ function login() {
                       <br>
                       Token: ${result.data.token} `
 
-                    if(result.data.user.role !== 'Admin'){
+                    if (result.data.user.role !== 'Admin') {
                         console.log('ej admin');
-                        
+
                     } else {
                         console.log('fetchar ändå');
-                        
+
                         fetchData()
+                        fetchEverything()
                     }
 
                 } else {
@@ -56,6 +67,49 @@ function login() {
             })
 
     })
+}
+
+function fetchEverything() {
+    let token = sessionStorage.getItem("token");
+
+    fetch('http://localhost:5500/gdpr', {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+    })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+
+            const html = data
+
+                .map(todo => {
+                    return `<p> Title:  ${todo.tasks} 
+                        <br>
+                        Done: ${todo.done}
+                        <br>
+                        Created: ${todo.created}
+                        <br>
+                        Urgent: ${todo.urgent}
+                        <br>
+                        List id: ${todo.listID}
+                        </p>
+                        <hr>`
+                })
+                .join('')
+                document.querySelector('.everything').innerHTML = html
+                console.log('Fick access');
+
+        })
+        .catch(error => {
+            // document.querySelector('#gdprError').innerHTML = "You need to login"
+
+            console.log(error)
+        })
 }
 
 
@@ -170,6 +224,9 @@ function register() {
 
 function logout() {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('id');
+
     console.log('removed token from session storage');
 
 }
@@ -196,6 +253,26 @@ function displayRegister() {
     else
         register.style.display = 'block';
 }
+
+function displayTodos() {
+    var register = document.querySelector('.todoContainer');
+
+    if (register.style.display == 'block')
+        register.style.display = 'none';
+    else
+        register.style.display = 'block';
+}
+
+function displayEverythingContainer() {
+    var register = document.querySelector('.everythingContainer');
+
+    if (register.style.display == 'block')
+        register.style.display = 'none';
+    else
+        register.style.display = 'block';
+}
+
+
 
 login()
 register()

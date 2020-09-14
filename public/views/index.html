@@ -16,6 +16,9 @@
 
         <button class="loginbtn" onclick="displayLogin()">Login</button>
         <button class="registerbtn" onclick="displayRegister()">Register</button>
+        <button class="todobtn" onclick="displayTodos()">Todos</button>
+        <button class="todoListbtn">Todo Lists</button>
+        <button class="gdpr" onclick="displayEverythingContainer()">All data about you</button>
         <button onclick="logout()">logout</button>
         <div id="result"></div>
 
@@ -57,13 +60,22 @@
 <!-- <div class="todos"></div> -->
         </div>
     </div>
+    <h4 id="gdprError"></h4>
+    <h5 class="loggedInAs"></h5>
     <div id="granted"></div>
 
     <div class="todoContainer">
             <h3>Todos</h3>
             <div class="todos">
             </div>
+    </div>
+
+    <div class="everythingContainer">
+        <h3>Everything</h3>
+        <div class="everything">
+
         </div>
+    </div>
 
 
     <script src="../scripts/script.js"></script>

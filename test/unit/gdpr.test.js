@@ -178,7 +178,7 @@ describe('GDPR', () => {
     //         //     })
     //     let id = '123'
     //     const deleteTodo = await gdprModel.deleteGdprModel(id)
-    //     deleteTodo.should.equal(1) //1 = true
+    //     deleteTodo.should.equal(1) //1 = tru
     // })
 
 })

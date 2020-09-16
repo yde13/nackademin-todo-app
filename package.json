@@ -9,6 +9,7 @@
     "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.5",
     "cookieparser": "^0.1.0",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -18,7 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "ENVIRONMENT=test mocha --recursive",
+    "test": "cross-env ENVIRONMENT=test mocha --recursive",
     "start": "nodemon start.js"
   },
   "author": "",

@@ -85,23 +85,25 @@ function fetchEverything() {
         .then(data => {
             console.log(data);
 
-            const html = data
-
+            const lists = data.tasks //nu får jag bara ut listorna
+            
                 .map(todo => {
-                    return `<p> Title:  ${todo.tasks} 
+                    return `<p> Title:  ${todo.title} 
                         <br>
-                        Done: ${todo.done}
+                        Done: ${todo.tasks}
                         <br>
                         Created: ${todo.created}
                         <br>
                         Urgent: ${todo.urgent}
+                        <br>
+                        Created by: ${todo.createdBy}
                         <br>
                         List id: ${todo.listID}
                         </p>
                         <hr>`
                 })
                 .join('')
-                document.querySelector('.everything').innerHTML = html
+                document.querySelector('.everything').innerHTML = lists
                 console.log('Fick access');
 
         })

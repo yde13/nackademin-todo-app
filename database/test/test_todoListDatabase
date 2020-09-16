@@ -1,14 +1,12 @@
-{"title":"List 1","listID":"1","_id":"mQEE3V78U7jwNlpS"}
-{"title":"List 1","listID":"1","createdBy":"ePNAInZVO4O36p7Y","_id":"9k4sXZ9NJLnoC5Lo"}
-{"title":"List 2","listID":"1","_id":"mQEE3V78U7jwNlpS"}
-{"$$deleted":true,"_id":"mQEE3V78U7jwNlpS"}
-{"$$deleted":true,"_id":"9k4sXZ9NJLnoC5Lo"}
+{"title":"List 1","listID":"1","_id":"SAZmC28fSb3WPYKW"}
+{"title":"List 1","listID":"1","createdBy":"XL4kOnASOlwpWhJc","_id":"7HW7Hw0c9MlAvrtt"}
+{"title":"List 2","listID":"1","_id":"SAZmC28fSb3WPYKW"}
+{"$$deleted":true,"_id":"SAZmC28fSb3WPYKW"}
+{"$$deleted":true,"_id":"7HW7Hw0c9MlAvrtt"}
 {"title":"list 1","listID":"1","_id":"1"}
 {"title":"list 2","listID":"2","_id":"2"}
 {"$$deleted":true,"_id":"1"}
 {"$$deleted":true,"_id":"2"}
-{"title":"list 1","listID":"1","createdBy":"123","_id":"1"}
-{"$$deleted":true,"_id":"1"}
 {"title":"list 1","listID":"1","createdBy":"123","_id":"1"}
 {"$$deleted":true,"_id":"1"}
 {"title":"Todolist 1","listID":"1","_id":"1"}

@@ -1,16 +1,14 @@
 {"title":"todo list","done":false,"created":"1998","urgent":false,"listID":"1","_id":"1"}
-{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"PRSdWdhRmxP5HuZz"}
-{"title":"Post","done":false,"created":"2020-8-13 Time: 15:29:49","urgent":false,"listID":"1","createdBy":"N92MxwBPwTzBo3Lt","_id":"jblRfctQWaWDV29t"}
-{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"PRSdWdhRmxP5HuZz"}
-{"$$deleted":true,"_id":"PRSdWdhRmxP5HuZz"}
-{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"5TaffWjjeA1Yevw0"}
+{"title":"Post","done":false,"created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"vPxe1ysvSiQPhdMN"}
+{"title":"Post","done":false,"created":"2020-8-16 Time: 11:9:28","urgent":false,"listID":"1","createdBy":"6Zxt0vuZgJ9yS5lx","_id":"F2kPpVI0suwKkLbp"}
+{"title":"Städa","created":"2020-06-04","urgent":false,"listID":"1","createdBy":"1","_id":"vPxe1ysvSiQPhdMN"}
+{"$$deleted":true,"_id":"vPxe1ysvSiQPhdMN"}
+{"title":"List 1","done":false,"created":"2020-06-04","urgent":false,"listID":"1","_id":"1kD0JQTXnbr6jPLo"}
 {"$$deleted":true,"_id":"1"}
-{"$$deleted":true,"_id":"5TaffWjjeA1Yevw0"}
-{"$$deleted":true,"_id":"jblRfctQWaWDV29t"}
+{"$$deleted":true,"_id":"1kD0JQTXnbr6jPLo"}
+{"$$deleted":true,"_id":"F2kPpVI0suwKkLbp"}
 {"title":"todo 1","done":true,"created":"1998","urgent":false,"listID":"1","createdBy":"321","_id":"1"}
 {"$$deleted":true,"_id":"1"}
-{"title":"todo 2","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"123","_id":"2"}
-{"$$deleted":true,"_id":"2"}
 {"title":"todo 2","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"123","_id":"2"}
 {"$$deleted":true,"_id":"2"}
 {"title":"todo 1","done":false,"created":"1998","urgent":false,"listID":"1","createdBy":"Hugo","_id":"1"}

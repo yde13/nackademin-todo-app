@@ -146,39 +146,39 @@ describe('GDPR', () => {
 
     })
 
-    it('Should delete everything on an account', async () => {
-        await taskModel.addTaskModel(
-            {
-                title: 'todo 2',
-                done: false,
-                created: '1998',
-                urgent: false,
-                listID: '1',
-                createdBy: '123',
-                _id: '2'
-            })
-        await todoListModel.addTodoListModel(
-            {
-                title: "list 1",
-                listID: '1',
-                createdBy: '123',
-                _id: '1'
-            },
-            {
-                title: 'list 2',
-                listID: '2',
-                createdBy: '321',
-                _id: '2'
-            })
-            // await userModel.postUserModel({
-            //         username: 'Philip',
-            //         password: 'password',
-            //         role: 'User',
-            //         _id: '123'
-            //     })
-        let id = '123'
-        const deleteTodo = await gdprModel.deleteGdprModel(id)
-        deleteTodo.should.equal(1) //1 = tru
-    })
+    // it('Should delete everything on an account', async () => {
+    //     await taskModel.addTaskModel(
+    //         {
+    //             title: 'todo 2',
+    //             done: false,
+    //             created: '1998',
+    //             urgent: false,
+    //             listID: '1',
+    //             createdBy: '123',
+    //             _id: '2'
+    //         })
+    //     await todoListModel.addTodoListModel(
+    //         {
+    //             title: "list 1",
+    //             listID: '1',
+    //             createdBy: '123',
+    //             _id: '1'
+    //         },
+    //         {
+    //             title: 'list 2',
+    //             listID: '2',
+    //             createdBy: '321',
+    //             _id: '2'
+    //         })
+    //         // await userModel.postUserModel({
+    //         //         username: 'Philip',
+    //         //         password: 'password',
+    //         //         role: 'User',
+    //         //         _id: '123'
+    //         //     })
+    //     let id = '123'
+    //     const deleteTodo = await gdprModel.deleteGdprModel(id)
+    //     deleteTodo.should.equal(1) //1 = tru
+    // })
 
 })

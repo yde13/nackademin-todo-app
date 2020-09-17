@@ -38,7 +38,7 @@ switch (process.env.ENVIRONMENT) {
 
         mongoDatabase = {
             // mongodb+srv://user:password@host/dbname
-            getUri: async () => /
+            getUri: async () => 
 
                 `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
         }

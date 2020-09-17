@@ -1,7 +1,16 @@
 const db = require('../database/database.js');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose')
 require('dotenv').config()
+
+const userSchema = new mongoose.Schema({
+    username: { type: String, unique: true },
+    password: String,
+    role: String
+})
+
+const User = mongoose.model('users', userSchema)
 
 
 async function getUserModel(username, password) {
@@ -10,10 +19,12 @@ async function getUserModel(username, password) {
         const secret = process.env.SECRET;
 
         try {
-            const user = await db.users.findOne({ username: username })
+
+            const user = await User.findOne({ username: username })
 
             const success = bcrypt.compareSync(password, user.password)
-            const token = jwt.sign(user, secret)
+
+            const token = jwt.sign({ id: user._id, username: user.username, role: user.role }, secret)
             return { user, token, success };
 
 
@@ -29,35 +40,41 @@ async function getUserModel(username, password) {
 
 }
 
-function postUserModel(username, password, role) {
-    return new Promise(async (resolve, reject) => {
 
-        try {
- 
-            const hashedPassword = bcrypt.hashSync(password, 10)
+async function postUserModel(username, password, role) {
 
-            credentials = {
-                username: username,
-                password: hashedPassword,
-                role: role,
-            }
+    try {
 
-
-            const insert = await db.users.insert(credentials);
-
-            resolve(insert);
-        } catch (error) {
-            reject(error)
+        // const { email, password } = fields
+        const hashedPassword = bcrypt.hashSync(password, 10)
+        console.log(hashedPassword);
+        credentials = {
+            username: username,
+            password: hashedPassword,
+            role: role,
         }
-    })
+        const user = await User.create(credentials)
+        console.log(user);
+
+        return user._doc
+
+    } catch (error) {
+        return (error)
+    }
 }
 
 function editUserModel(id, user) {
     return new Promise(async (resolve, reject) => {
 
         try {
+            const hashedPassword = bcrypt.hashSync(user.password, 10)
 
-            const post = await db.users.update({ _id: id }, { $set: user });
+            let credentials = {
+                username: user.username,
+                password: hashedPassword
+            }
+
+            const post = await User.updateOne({ _id: id }, { $set: credentials }); //updateOne
 
             resolve(post);
         } catch (error) {
@@ -71,7 +88,7 @@ function deleteUserModel(id) {
     return new Promise(async (resolve, reject) => {
         try {
 
-            const removed = await db.users.remove({ _id: id });
+            const removed = await User.deleteOne({ _id: id }); //deleteOne
 
             resolve(removed);
         } catch (error) {
@@ -80,8 +97,39 @@ function deleteUserModel(id) {
     });
 }
 
+async function getAllUsersModel() {
+    try {
+        const user = await User.find({})
+        return user
+
+    } catch (error) {
+        return error
+    }
+}
+
+async function getOneUsersModel(id) {
+    try {
+        console.log('här');
+        
+        const user = await User.findOne({_id: id})
+        return user
+
+    } catch (error) {
+        return error
+    }
+}
+
 async function clear() {
-    await db.users.remove({})
+    try {
+        console.log('här');
+
+        let deleted = await User.deleteMany({})
+        return deleted
+    } catch (error) {
+        return error
+    }
+
+
 }
 
 
@@ -91,5 +139,7 @@ module.exports = {
     postUserModel,
     editUserModel,
     deleteUserModel,
-    clear
+    clear,
+    getAllUsersModel,
+    getOneUsersModel
 }

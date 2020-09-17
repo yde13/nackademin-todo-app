@@ -7,6 +7,7 @@ async function getGdprController(req, res) {
 }
 
 async function getSingleGdprController(req, res) {
+    
     let id = req.params.id
 
 

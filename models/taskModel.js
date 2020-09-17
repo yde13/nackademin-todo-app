@@ -1,11 +1,23 @@
 const db = require('../database/database.js');
+const mongoose = require('mongoose')
+
+const taskSchema = new mongoose.Schema({
+    title: {type: String, unique: true },
+    done: Boolean,
+    created: String,
+    urgent: Boolean,
+    listID: String,
+    createdBy: String
+})
+
+const Task = mongoose.model('tasks', taskSchema)
+
 
 function getTaskModel () {
     return new Promise(async(resolve, reject) => {
-        
         try {
 
-            const posts = await db.posts.find({});
+            const posts = await Task.find({});
 
             resolve(posts);
         } catch (error) {
@@ -14,11 +26,24 @@ function getTaskModel () {
     });    
 }
 
+function getTaskModelByListID (id) {
+    return new Promise(async(resolve, reject) => {
+        try {
+
+            const posts = await Task.find({listID: id});
+
+            resolve(posts);
+        } catch (error) {
+            reject(error);
+        } 
+    }); 
+}
+
 function getSingleTaskModel(id) {
     return new Promise(async(resolve, reject) => {
         
         try {
-            let lists = await db.posts.find({createdBy: id});
+            let lists = await Task.find({createdBy: id});
             resolve(lists);
         } catch (error) {
             reject(error);
@@ -31,8 +56,9 @@ function addTaskModel(task) {
         
         try {
 
-            const post = await db.posts.insert(task);
-
+            const post = await Task.create(task);
+            console.log(post);
+            
             resolve(post);
         } catch (error) {
             reject(error);
@@ -46,7 +72,7 @@ function editTaskModel(id, task) {
 
         try {
 
-            const post = await db.posts.update({_id :id},{ $set: task });
+            const post = await Task.updateOne({_id :id},{ $set: task });
             
             resolve(post);
         } catch (error) {
@@ -55,13 +81,12 @@ function editTaskModel(id, task) {
     });
 }
 
-
 function deleteTaskModel (id) {
 
     return new Promise(async(resolve, reject) => {
         try {
 
-            const removed = await db.posts.remove({_id : id});
+            const removed = await Task.deleteOne({_id : id});
 
             resolve(removed);
         } catch (error) {
@@ -70,8 +95,23 @@ function deleteTaskModel (id) {
     });
 }
 
+function deleteTaskCreatedByModel (id) {
+
+    return new Promise(async(resolve, reject) => {
+        try {
+
+            const removed = await Task.deleteMany({createdBy : id});
+
+            resolve(removed);
+        } catch (error) {
+            reject(error)
+        }
+    });
+}
+
+
 function clear() {
-    db.posts.remove({}, {multi: true})
+    Task.deleteMany({}, {multi: true})
 }
 
 module.exports = {
@@ -80,6 +120,8 @@ module.exports = {
     addTaskModel,
     editTaskModel,
     deleteTaskModel,
-    clear
+    clear,
+    getTaskModelByListID,
+    deleteTaskCreatedByModel
     //taskIsDoneModel
 }

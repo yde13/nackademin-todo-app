@@ -27,12 +27,14 @@ function addTodoListController(req, res) {
         let todoList = {
             title: req.body.title,
             listID: req.body.listID,
-            createdBy: req.user._id
+            createdBy: req.user.id
         }
+        console.log(req.user);
+        
 
 
         let result = model.addTodoListModel(todoList)
-        res.json(result)
+        res.json(todoList)
 
     } catch (error) {
         res.json({ error: error.message })

@@ -33,8 +33,8 @@ function addTaskController(req, res) {
             created: all,
             urgent: false,
             listID: req.body.listID,
-            createdBy: req.user._id
-        }
+            createdBy: req.user.id
+        }        
 
         let result = model.addTaskModel(task)
         res.json(result)

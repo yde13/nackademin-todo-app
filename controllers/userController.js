@@ -51,7 +51,7 @@ async function editUserController(req, res) {
         var id = req.params.id;
         let user = {
             username: req.body.username,
-            password: hash
+            password: req.body.password
         }
         const updatedUser = await model.editUserModel(id, user)
 

@@ -78,8 +78,9 @@ async function connect() {
 }
 
 async function disconnect() {
-    await mongoDatabase.stop()
     await mongoose.disconnect()
+    await mongoDatabase.stop()
+
 }
 
 

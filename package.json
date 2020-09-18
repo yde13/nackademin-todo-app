@@ -22,7 +22,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "cross-env ENVIRONMENT=test mocha --recursive",
+    "test": "cross-env ENVIRONMENT=test mocha -b --recursive",
     "start": "node start.js"
   },
   "author": "",

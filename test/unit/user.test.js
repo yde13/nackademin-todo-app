@@ -1,5 +1,6 @@
 const userModel = require('../../models/userModel');
 const bcrypt = require('bcryptjs')
+const db = require('../../database/database');
 
 //const userController = require('../controllers/userController')
 // require('chai').should();
@@ -14,11 +15,18 @@ const { expect, request, should } = chai
 
 
 describe('users', () => {
+    before(async function () {
+        await db.connect();
+    });
+    after(async function () {
+        await db.disconnect();
+    });
     beforeEach(async () => {
         await userModel.clear()
     })
 
     it('Should get one user and login', async () => {
+        
         let username = "Alexandre"
         let password = 'philip'
         let role = 'Admin'
@@ -62,7 +70,8 @@ describe('users', () => {
             username: "Alexandre",
             password: credentials.password,
             role: "Admin",
-            _id: credentials._id
+            _id: credentials._id,
+            __v: credentials.__v
 
         })
     })
@@ -82,7 +91,7 @@ describe('users', () => {
             role: 'Admin'
         }
         const updatedUser = await userModel.editUserModel(id, credentials)
-        updatedUser.should.equal(1)
+        updatedUser.ok.should.equal(1)
 
     })
 
@@ -96,7 +105,7 @@ describe('users', () => {
             )
         let id = user._id
         const deleteUser = await userModel.deleteUserModel(id)
-        deleteUser.should.equal(1)
+        deleteUser.ok.should.equal(1)
     })
 
 })

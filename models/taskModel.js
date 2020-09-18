@@ -13,17 +13,15 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model('tasks', taskSchema)
 
 
-function getTaskModel () {
-    return new Promise(async(resolve, reject) => {
+async function getTaskModel () {
         try {
 
             const posts = await Task.find({});
 
-            resolve(posts);
+            return posts
         } catch (error) {
-            reject(error);
+            return error
         } 
-    });    
 }
 
 function getTaskModelByListID (id) {
@@ -57,7 +55,7 @@ function addTaskModel(task) {
         try {
 
             const post = await Task.create(task);
-            console.log(post);
+            // console.log(post);
             
             resolve(post);
         } catch (error) {

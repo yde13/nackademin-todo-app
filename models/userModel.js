@@ -29,7 +29,7 @@ async function getUserModel(username, password) {
 
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             return error
         }
 
@@ -47,14 +47,14 @@ async function postUserModel(username, password, role) {
 
         // const { email, password } = fields
         const hashedPassword = bcrypt.hashSync(password, 10)
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
         credentials = {
             username: username,
             password: hashedPassword,
             role: role,
         }
         const user = await User.create(credentials)
-        console.log(user);
+        // console.log(user);
 
         return user._doc
 
@@ -109,7 +109,6 @@ async function getAllUsersModel() {
 
 async function getOneUsersModel(id) {
     try {
-        console.log('här');
         
         const user = await User.findOne({_id: id})
         return user
@@ -121,7 +120,6 @@ async function getOneUsersModel(id) {
 
 async function clear() {
     try {
-        console.log('här');
 
         let deleted = await User.deleteMany({})
         return deleted
